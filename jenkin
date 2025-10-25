@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the source code from GitHub
+                git 'https://github.com/username/my-jenkins-pipeline.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Build your application (e.g., compiling code)
+                echo 'Building project...'
+                sh 'make'  // Replace with your build commands
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run unit tests or other tests
+                echo 'Running tests...'
+                sh 'make test'  // Replace with your test commands
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Deploy your application to a server or cloud
+                echo 'Deploying project...'
+                sh './deploy.sh'  // Replace with your deploy commands
+            }
+        }
+    }
+}
